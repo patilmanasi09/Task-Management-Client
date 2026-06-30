@@ -60,7 +60,7 @@ const Navbar = () => {
           className="navbar-brand fw-bold fs-3"
           style={{ color: "#fff" }}
         >
-          TaskMGMT
+          Task Management System
         </span>
 
         <div className="d-flex align-items-center gap-3">

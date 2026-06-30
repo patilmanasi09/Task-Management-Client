@@ -50,15 +50,15 @@ const Profile = () => {
     try {
       const formData = new FormData();
 
-      formData.append("name", form.name);
-      formData.append("email", form.email);
-      formData.append("contactNumber", form.contactNumber);
+formData.append("name", form.name);
+formData.append("email", form.email);
+formData.append("contactNumber", form.contactNumber);
 
-      if (image) {
-        formData.append("imgPath", image);
-      }
+if (image) {
+  formData.append("imgPath", image);
+}
 
-      const res = await updateProfile(formData);
+await updateProfile(formData);
 
       if (res.success) {
         await fetchUser();

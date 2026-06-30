@@ -50,10 +50,7 @@ export const assignTaskToUserAPI = async (payload) => {
 };
 
 export const getMyTasksAPI = async () => {
-  const res = await axiosInstance.get(
-    "/assign-task/get-tasks-by-user"
-  );
-
+  const res = await axiosInstance.get("/assign-task/getTasksByUser");
   return res.data;
 };
 

@@ -608,7 +608,7 @@ const AllTasks = () => {
     >
       <option value="All">All Status</option>
       <option value="Pending">Pending</option>
-      <option value="InProgress">InProgress</option>
+      <option value="Inprogress">InProgress</option>
       <option value="Completed">Completed</option>
     </select>
 
