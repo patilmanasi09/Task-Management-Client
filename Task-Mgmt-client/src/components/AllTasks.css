@@ -1,0 +1,176 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #eef2f7, #f8fafc);
+}
+
+
+/* Back Button */
+.back-btnn {
+  position: absolute;
+  top: 100px;
+  left: 300px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-btnn:hover {
+  background: #1d4ed8;
+}
+
+
+/* PAGE */
+.page {
+  padding: 25px;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 32px;
+  color: #111;
+}
+
+.header p {
+  margin-top: 6px;
+  color: #666;
+}
+
+/* FILTER BAR */
+.filterBar {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.filterBar input,
+.filterBar select {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  width: 220px;
+  outline: none;
+  background: white;
+  transition: 0.2s;
+}
+
+.filterBar input:focus,
+.filterBar select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 6px rgba(99,102,241,0.3);
+}
+
+/* GRID → 3 CARDS PER ROW */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 🔥 3 cards fixed */
+  gap: 20px;
+  justify-items: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;          /* increased */
+  width: 100%;
+  max-width: 400px;       /* was 320px → now bigger */
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+/* TITLE */
+.card h3 {
+  font-size: 24px;
+  margin: 10px 0;
+  color: #111;
+}
+
+/* DESCRIPTION */
+.card p {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #555;
+}
+
+/* DATES */
+.dates p {
+  font-size: 16px;
+  margin: 4px 0;
+  color: #444;
+}
+
+/* STATUS BADGE */
+.status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  font-size: 17px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+/* STATUS COLORS */
+.pending {
+  background: #ef4444;
+}
+
+.progress {
+  background: #f59e0b;
+  color: black;
+}
+
+.completed {
+  background: #22c55e;
+}
+
+.default {
+  background: gray;
+}
+
+/* EMPTY */
+.empty {
+  text-align: center;
+  color: #777;
+  font-size: 16px;
+}

@@ -1,0 +1,150 @@
+.glass-bg {
+  position: relative;
+  min-height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+
+  background: #4f46e5;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #3730a3;
+}
+
+/* Background Gradient */
+.glass-bg {
+  min-height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #e0e7ff, #f5f7ff);
+  padding: 30px;
+}
+
+/* Glass Card */
+.glass-card {
+  width: 100%;
+  max-width: 650px;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+/* Header */
+.glass-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.glass-header h2 {
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.glass-header p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Inputs */
+.glass-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group label {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 5px;
+  display: block;
+  color: #374151;
+}
+
+.input-group input,
+.input-group textarea,
+.input-group select {
+  width: 100%;
+  padding: 10px 12px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.1);
+
+  outline: none;
+  transition: 0.3s;
+  background: rgba(255,255,255,0.8);
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+}
+
+/* Row */
+.row-fields {
+  display: flex;
+  gap: 15px;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #e5e7eb;
+  color: #111827;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .row-fields {
+    flex-direction: column;
+  }
+}
