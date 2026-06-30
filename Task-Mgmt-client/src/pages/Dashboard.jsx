@@ -279,6 +279,20 @@ import React, { useEffect, useMemo, useState } from "react";
 import axiosInstance from "../api/axiosInstance";
 import { useUser } from "../context/UserContext";
 
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  Legend,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  ResponsiveContainer
+} from "recharts";
+
 const Dashboard = () => {
   const { user } = useUser();
 
@@ -291,9 +305,13 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const tasksPerPage = 6;
 
+ // ✅ REAL MONTHLY DATA FROM BACKEND
+  const [monthlyData, setMonthlyData] = useState([]);
+  
  useEffect(() => {
   if (user) {
     fetchTasks();
+     fetchMonthlyData();
   }
 }, [user]);
 
@@ -314,6 +332,16 @@ const fetchTasks = async () => {
     console.log(error);
   }
 };
+
+  // ✅ FIXED MONTHLY API CALL
+  const fetchMonthlyData = async () => {
+    try {
+      const res = await axiosInstance.get("/task/tasks-per-month");
+      setMonthlyData(res.data.data || []);
+    } catch (error) {
+      console.log("Monthly API error:", error);
+    }
+  };
 
   const handleDelete = async (id) => {
     try {
@@ -378,6 +406,24 @@ const fetchTasks = async () => {
         return "bg-secondary";
     }
   };
+
+    // ✅ PIE DATA (unchanged)
+  const pieData = useMemo(() => [
+    { name: "Pending", value: tasks.filter(t => t.status === "Pending").length },
+    { name: "Inprogress", value: tasks.filter(t => t.status === "Inprogress").length },
+    { name: "Completed", value: tasks.filter(t => t.status === "Completed").length },
+  ], [tasks]);
+
+  const COLORS = ["#ffc107", "#dc3545", "#198754"];
+
+  // ✅ FIXED BAR DATA (REAL BACKEND DATA)
+  const barData = useMemo(() => {
+    return monthlyData.map((item) => ({
+      month: item.month,   // "2026-01"
+      tasks: item.count    // number
+    }));
+  }, [monthlyData]);
+
 
   return (
     <div
@@ -475,6 +521,52 @@ const fetchTasks = async () => {
               </h2>
             </div>
           </div>
+        </div>
+
+
+
+      </div>
+
+      {/* ================= CHARTS ================= */}
+      <div className="row mb-5">
+
+        {/* PIE */}
+        <div className="col-md-6">
+          <h5 className="text-center">Task Status</h5>
+
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={pieData}
+                dataKey="value"
+                nameKey="name"
+                outerRadius={120}
+                label
+              >
+                {pieData.map((entry, index) => (
+                  <Cell key={index} fill={COLORS[index]} />
+                ))}
+              </Pie>
+
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* BAR */}
+        <div className="col-md-6">
+          <h5 className="text-center">Tasks Per Month</h5>
+
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={barData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="month" />
+              <YAxis />
+              <Tooltip />
+              <Bar dataKey="tasks" fill="#0d6efd" />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
 
       </div>
