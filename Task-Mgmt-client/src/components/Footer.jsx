@@ -14,7 +14,7 @@ const Footer = () => {
   }}
 >
   <p className="mb-1">
-    Organize your tasks and stay productive 🚀
+    Organize your tasks and stay productive.. 🚀
   </p>
 
   <small>
