@@ -8,7 +8,7 @@ const TaskDetails = () => {
 
   const fetchTask = async () => {
     try {
-      const res = await axiosInstance.get(`/task/get/${id}`);
+const res = await axiosInstance.get(`/task/getTask/${id}`);
       setTask(res.data.task);
     } catch (error) {
       console.log(error);
